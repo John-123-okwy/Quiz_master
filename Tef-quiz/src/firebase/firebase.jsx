@@ -10,13 +10,13 @@ import{getFirestore} from "firebase/firestore"
 
 
 const firebaseConfig={
-    apiKey: "AIzaSyAhBnI6Re4wB6IuKzABriFE0QcZ4KVSgm4",
-  authDomain: "quiz-app-4e172.firebaseapp.com",
-  projectId: "quiz-app-4e172",
-  storageBucket: "quiz-app-4e172.firebasestorage.app",
-  messagingSenderId: "243519786450",
-  appId: "1:243519786450:web:c5d10b299626d4ee33cc0b",
-  measurementId: "G-WJ2R7KEYHP"
+    apiKey:import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId:import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 }
 
 ////////////////////////
