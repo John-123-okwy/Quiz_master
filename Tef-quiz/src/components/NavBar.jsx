@@ -12,10 +12,12 @@ function NavBar({setShowSidebar}) {
   /////////////////////////
   return (
     <header className="navbar">
+      <div className="nav-brand  ">
       <div className="navbar-left">
         <button className="menu-btn" onClick={()=>setShowSidebar((prev)=>!prev)}>
           <Menu size={24} />
         </button>
+        
         <h2 className="logo">QuizMaster</h2>
       </div>
       <div className="navbar-right">
@@ -27,7 +29,7 @@ function NavBar({setShowSidebar}) {
         <button onClick={()=>navigate("/profile")}>Profile</button>
         <button onClick={()=>navigate("/login")}>Logout</button>
       </div>)}
-    </header>
+   </div> </header>
   );
 }
 export default NavBar;

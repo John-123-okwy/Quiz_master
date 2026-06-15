@@ -34,7 +34,7 @@ function RecentActivity({history}) {
         <div key={quiz.id} className="activity-item">
           <div>
             <h4>{quiz.subject}</h4>
-            <p>score:{quiz.score}%</p>
+            <p> Percentage Score:{quiz.score}%</p>
             <p>Point:{quiz.points}/{quiz.totalPoints}</p>
           </div>
           <span>Date:{new Date(quiz.submittedAt).toLocaleString()}</span>

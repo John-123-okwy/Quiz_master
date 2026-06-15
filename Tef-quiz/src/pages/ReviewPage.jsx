@@ -5,6 +5,7 @@ import ReviewQueNav from "../components/ReviewQueNav";
 import ReviewQuestion from "../components/ReviewQuestion";
 import RevNextButton from "../components/RevNextButton";
 import RevPrevButton from "../components/RevPrevButton";
+import { ArrowLeft } from "lucide-react";
 
 function ReviewPage({ questions, answer, reviewIndex, dispatch }) {
 
@@ -20,6 +21,9 @@ function ReviewPage({ questions, answer, reviewIndex, dispatch }) {
   const navigate=useNavigate()
   return (
     <div>
+       <button onClick={() => navigate("/dashboard")} className="back-btn">
+          <ArrowLeft/> <span>Back To Dashboard</span>
+        </button>
       <h1> Review Page</h1>
       <ReviewQuestion  reviewIndex={reviewIndex} pquestion={pquestion}/>
       <ReviewOption pquestion={pquestion} userAnswer={userAnswer}/>
@@ -28,7 +32,7 @@ function ReviewPage({ questions, answer, reviewIndex, dispatch }) {
       <ReviewQueNav questions={questions} reviewIndex={reviewIndex} dispatch={dispatch}/>
       <RevPrevButton reviewIndex={reviewIndex} dispatch={dispatch}/>
       <RevNextButton reviewIndex={reviewIndex} questions={questions} dispatch={dispatch}/>
-      <button onClick={()=>navigate("/dashboard")}>Back to dashboard</button>
+      
     </div>
   );
 }

@@ -46,6 +46,7 @@ import { auth } from "./firebase/firebase";
 import Profile from "./pages/Profile";
 import AdminRoute from "./components/AdminRoute";
 import Admin from "./pages/Admin";
+import LeaderBoard from "./pages/LeaderBoard";
 
 function App() {
   const [isloading, setIsLoading] = useState(true);
@@ -86,6 +87,7 @@ function App() {
           </AdminRoute>
         }
       />
+      <Route path="/leaderboard" element={<LeaderBoard/>}/>
       <Route path="/subject/:subjectId" element={<SubjectDetails />} />
       <Route path="/quiz/:subjectId" element={<Quiz />} />
       <Route path="/profile" element={<Profile />} />

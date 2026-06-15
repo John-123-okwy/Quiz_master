@@ -79,7 +79,7 @@ function Dashboard() {
   //=====handler function for its online================//
   useEffect(() => {
     function handleOnline() {
-      setIsOnline(true);  
+      setIsOnline(true);
     }
     function handleOffline() {
       setIsOnline(false);
@@ -98,19 +98,20 @@ function Dashboard() {
     await signOut(auth);
   }
   /////////////////
+
   const [quizHistory, setQuizHistory] = useState([]);
 
   const [loading, setLoading] = useState(null);
 
   const [error, setError] = useState(false);
- 
+
   console.log(quizHistory);
+  //========================userDAta state variable==================//
 
   //===============state variable for streak==================//
 
   const [streak, setStreak] = useState(0);
 
-  
   //===============function for calculate streak==============//
   function caculateStreak(quizHistory) {
     if (!quizHistory || quizHistory.length === 0) {
@@ -141,17 +142,24 @@ function Dashboard() {
     return streak;
   }
 
-
   //================fetchHistory/useEffect=======================//
+
   useEffect(() => {
     async function fetchQuizHistory() {
       setLoading(true);
       try {
         const user = auth.currentUser;
+
         if (!user) {
           setLoading(false);
           return;
         }
+        // const userRef = doc(db, "users", user.uid);
+        //const userSnap = await getDoc(userRef);
+        //const fetchUserData = userSnap.data();
+        //console.log(fetchUserData);
+        //setUserData(fetchUserData)
+
         if (navigator.onLine) {
           const q = await query(
             collection(db, "users", user.uid, "quizHistory"),
@@ -163,12 +171,15 @@ function Dashboard() {
             ...doc.data(),
           }));
 
-// sort the history according tot the most recent
+          // sort the history according tot the most recent
           history.sort(
             (a, b) => new Date(b.submittedAt) - new Date(a.submittedAt),
           );
+
           setQuizHistory(history);
-          setStreak(caculateStreak(history))
+          console.log(history);
+
+          setStreak(caculateStreak(history));
 
           localStorage.setItem(
             `quizHistory_${user.uid}`,
@@ -177,24 +188,27 @@ function Dashboard() {
         } else {
           const cached =
             JSON.parse(localStorage.getItem(`quizHistory_${user.uid}`)) || [];
+
           setQuizHistory(cached);
-          setStreak(caculateStreak(cached))
+
+          setStreak(caculateStreak(cached));
         }
+
         setLoading(false);
       } catch (err) {
         console.log(err.message);
         setError(err);
       }
-    }
+    } 
 
     if (isOnline) {
       fetchQuizHistory();
+
       setLoading(false);
     }
   }, []);
 
   
-
   //==========derived state for userName================//
   const currentUser = auth.currentUser;
 
@@ -213,7 +227,7 @@ function Dashboard() {
   const averageScore = quizHistory.length
     ? Math.round(
         quizHistory.reduce((sum, quiz) => sum + Number(quiz.score), 0) /
-          quizHistory.length
+          quizHistory.length,
       )
     : 0;
 
@@ -227,8 +241,8 @@ function Dashboard() {
     (sum, quiz) => sum + quiz.totalQuestions,
     0,
   );
-
   
+
   //======= loading screen=========//
 
   if (loading) {
@@ -245,7 +259,7 @@ function Dashboard() {
     <div>
       {!isOnline ? (
         <div className={`offline-banner `}>
-          ⚠ You are offline. Some data may not be synced.
+          ⚠ You are offline. Some data may not be synced, check your internet.
         </div>
       ) : (
         <div className={`offline-banne `}>
@@ -259,12 +273,23 @@ function Dashboard() {
           <div className="overlay" onClick={() => setShowSidebar(false)} />
         )}
         <DashWelcome currentUser={currentUser} streak={streak} />
+       <section className="general-stat-section">
+        <h2>General Performance</h2>
         <StatsCardCont
           quizzesTaken={quizzesTaken}
           averageScore={averageScore}
           bestScore={bestScore}
           questionAnswered={questionAnswered}
+         // totalPointsScored={totalPointsScored}
         />
+        </section>
+       
+        <Link to="/leaderboard">
+          <div className="stat-card">
+            <h3> Leaderboard</h3>
+            <p>View Ranking</p>
+          </div>
+        </Link>
         <section className="subjects-section">
           <h2>Subjects</h2>
           <div className="subjects-grid">
@@ -283,18 +308,6 @@ function Dashboard() {
         </section>
         <RecentActivity history={quizHistory} />
 
-        {/*
-      <h1>Dashboard</h1>
-      <h2>select subject</h2>
-      {subjects.map((subject)=>(<div key={subject.id}>
-        <h3>{subject.name}</h3>
-        <h3>{subject.description}</h3>
-        <Link to={`/subject/${subject.id}`}>View details</Link>
-
-      </div>))}
-      <button onClick={handleLogout}>Logout</button>
-      <br></br>
-      <Link to="/quiz">Go to quiz</Link>*/}
         <div className="Up-btn">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -302,7 +315,7 @@ function Dashboard() {
             <ArrowUp size={18} />
           </button>
         </div>
-        <button onClick={()=>navigate("/admin")}>Admin</button>
+        <button  className="admin-login-btn" onClick={() => navigate("/admin")}>Admin</button>
       </div>
     </div>
   );

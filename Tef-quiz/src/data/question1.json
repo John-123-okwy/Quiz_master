@@ -1,0 +1,11 @@
+[
+  {
+    "question": "What is 3 + 3?",
+    "options": ["1", "6", "8", "4"],
+    "correctAnswer": 1,
+    "points": 10,
+    "difficulty": "easy",
+    "subject": "maths",
+    "explanation": " 3 + 3 = 6"
+  }
+]

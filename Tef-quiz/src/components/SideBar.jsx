@@ -30,7 +30,7 @@ function SideBar({showSidebar,setShowSidebar}) {
             </li>
             <li>
               <HistoryIcon />
-              <span>History</span>
+              <span   >History</span>
             </li>
             <li>
               <Award />

@@ -2,7 +2,7 @@ function DashWelcome({currentUser,streak}){
     return <section className="hero">
         <div className="hero-content">
           <div className="hero-text">
-            <h1>Welcome back, {currentUser.displayName}</h1>
+            <h1>Welcome, {currentUser.displayName}</h1>
             <p>
               Continue your learning journey and improve your performace across
               all subjects

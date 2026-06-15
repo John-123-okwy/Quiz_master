@@ -33,13 +33,27 @@ function LandingPage() {
 
 export default LandingPage;*/
 
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import LandingNavBar from "../components/LandingNavBar";
+import LandingHero from "../components/LandingHero";
+import LandingStats from "../components/LandingStats";
+import LandingFeatures from "../components/LandingFeatures";
+import HowItWorks from "../components/HowItWorks";
+import CTA from "../components/CTA";
+import LandingFooter from "../components/LandingFooter";
 
-function LandingPage(){
-  return<div><h1>
-    Landing Page</h1>
-    
-    <Link to="/login">Get Started</Link></div>
+function LandingPage() {
+  return (
+    <div className="main-landing-page">
+      <LandingNavBar />
+      <LandingHero />
+      <LandingStats />
+      <LandingFeatures />
+      <HowItWorks />
+      <CTA />
+      <LandingFooter />
+    </div>
+  );
 }
 
-export default LandingPage
+export default LandingPage;

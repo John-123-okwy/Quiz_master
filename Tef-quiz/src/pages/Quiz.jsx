@@ -37,7 +37,7 @@ function Quiz() {
       secondsRemaining,
       showReview,
       reviewIndex,
-      totalQuizTime
+      totalQuizTime,score
     },
     dispatch,
   ] = useReducer(quizReducer, initialState);
@@ -89,6 +89,7 @@ function Quiz() {
   if (finished) {
     return (
       <ResultPage
+      score={score}
         points={points}
         answer={answer}
         questions={questions}
@@ -127,7 +128,7 @@ function Quiz() {
         <PreviousButton dispatch={dispatch} />
         <br></br>
         {/*<NextButton dispatch={dispatch} />*/}
-        <SubmitButton index={index} dispatch={dispatch} questions={questions} />
+        <SubmitButton index={index} dispatch={dispatch} questions={questions} answer={answer} />
       </div>
 
       <QuestionNavigation

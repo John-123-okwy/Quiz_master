@@ -53,6 +53,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase/firebase";
 import { doc, setDoc } from "firebase/firestore";
+import { Eye, EyeOff } from "lucide-react";
 
 function SignupPage() {
   //===========state variable for user name==============//
@@ -66,9 +67,14 @@ function SignupPage() {
 
   const [password, setPassword] = useState("");
 
+  //========= state showPassword==============================//
+  const [showPassword, setShowPassword] = useState(false);
+
   //=============state variable for error==========//
 
   const [error, setError] = useState("");
+  //===================state loading==================//
+  const[loading, setLoading]=useState(false)
 
   //============variable for navigate=============//
 
@@ -80,6 +86,19 @@ function SignupPage() {
     e.preventDefault();
 
     setError("");
+    if(!userName.trim()){
+      setError("Please enter your username!");
+      return
+    }
+    if(!password){
+      setError("Please enter your password!")
+      ;return
+    }
+    if(!email){
+      setError("Please enter your email!")
+      ;return
+    }
+    setLoading(true)
 
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -94,6 +113,41 @@ function SignupPage() {
         {
           role: "user",
           createdAt: new Date().toISOString(),
+          email: email,
+          displayName: userName,
+          totalPoints: 0,
+          averageScores: 0,
+          bestScores: 0,
+          quizAttempts: 0,
+          currentStreak: 0,
+          subjectPoints: {
+            mathematics: 0,
+            physics: 0,
+            chemistry: 0,
+            english: 0,
+          },
+          subjectStats: {
+            mathematics: {
+              bestScore: 0,
+              averageScore: 0,
+              attempts: 0,
+            },
+            physics: {
+              bestScore: 0,
+              averageScore: 0,
+              attempts: 0,
+            },
+            chemistry: {
+              bestScore: 0,
+              averageScore: 0,
+              attempts: 0,
+            },
+            english: {
+              bestScore: 0,
+              averageScore: 0,
+              attempts: 0,
+            },
+          },
         },
         { merge: true },
       );
@@ -101,38 +155,68 @@ function SignupPage() {
       navigate("/dashboard");
     } catch (err) {
       setError(err.message);
+    } finally{
+      setLoading(false)
     }
   }
   return (
-    <div className="signup-container">
-      <h1>Create Account</h1>
-      <form onSubmit={handleSignup}>
-        <input
-          type="text"
-          placeholder="Enter user name..."
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
-        />
-        <input
-          type="email"
-          placeholder="Enter email..."
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+    <div className="login-container">
+      <div className="login-card">
+        <div className="login-header">
+          <h1>Create Account</h1>
+          <p>Signup to start your quiz journey</p>
+        </div>
 
-        <input
-          type="password"
-          placeholder="Enter password..."
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <form onSubmit={handleSignup} autoComplete="off" className="login-form">
+          <div className="input-group">
+            {" "}
+            <input
+              type="text"
+              placeholder="Enter user name..."
+              value={userName}
+               name="fullName" autoComplete="new-name"
+              onChange={(e) => setUserName(e.target.value)}
+            />
+          </div>
+          <div className="input-group">
+            {" "}
+            <input
+              type="email"
+              placeholder="Enter email..."
+              value={email}
+               name="new-email" autoComplete="new-email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
 
-        <button type="submit">Sign up</button>
-      </form>
-      {error && <p>{error}</p>}
-      <p>
-        Already have account? <Link to="/login">Login</Link>
-      </p>
+          <div className="input-group">
+            {" "}
+            <input
+              type="password"
+              placeholder="Enter password..."
+              value={password}
+
+
+               name="new-password" autoComplete="new-password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button
+              type="button"
+              className="eye-btn"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </button>
+          </div>
+
+          <button type="submit" className="log-in-btn" disabled={loading}> {loading?(<span className="loading-content"><span className="login-spinner"></span>
+          Signing in...</span>):"Sign up"}</button>
+        </form>
+        {error && <p className="error-message">{error}</p>}
+        <p className="signup-text">
+          Already have account? <Link to="/login" className="signup-text-link">Login</Link>
+        </p>
+      </div>
     </div>
   );
 }

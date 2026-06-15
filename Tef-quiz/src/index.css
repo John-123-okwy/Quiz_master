@@ -1078,32 +1078,69 @@ margin-top: 1rem;
 /*============Navbar styles================*/
 
 .navbar {
-  position: fixed;
-  top: 0;
-  z-index: 1000;
-  display: flex;
+  position: sticky;
+  top: 15px;
+  z-index: 20;
+  
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.5rem;
-  background-color: #fff;
+  padding: 18px 30px;
+  background: rgba(255, 255, 255, 0.55);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   height: 70px;
   width: 100%;
   margin-top: 2.3rem;
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow:  0 10px 30px rgba(0, 0, 0, 0.08);
   
   
-  
-
 }
+.nav-brand{
+  display: flex;
+  align-items: center;
+  gap: 30rem;
+  font-weight: 700;
+  font-size: 20px;
+  
+  
+  
+  /*background: linear-gradient(90deg,#2563eb,#7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;*/
+}
+.brand-icon{
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  position:absolute ;
+
+  
+  background:linear-gradient(135deg,#2563eb,#7c3aed) ;
+  
+}
+
 .navbar-left {
   display: flex;
   align-items: center;
   gap: 1rem;
+  
 }
 .navbar-right {
-  display: flex;
-  align-items: center;
-  margin-right: 5rem;
+  
+  
+  margin-right: -5rem;
+  padding: 8px 14px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.6);
+  margin-left: 30rem;
+  
+  
+
+
 }
 .logo {
   font-size: 1.3rem;
@@ -1131,9 +1168,43 @@ margin-top: 1rem;
   align-items: center;
   justify-content: center;
   transition: 0.2s;
+  background: #2563eb;
+  color: white;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  
+  
 }
 .profile-btn:hover {
   transform: scale(1.05);
+}
+/*==================Profile-menu styles=============*/
+.profile-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 180px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 1rem;
+}
+.profile-menu button {
+  margin-bottom: 1rem;
+  width: 55px;
+  border: none;
+  border-radius: 7px;
+  
+  color: #2563eb;
+}
+.profile-menu button:hover {
+  color: #4b5563;
+  cursor: pointer;
 }
 @media (max-width: 768px) {
   .navbar {
@@ -1157,6 +1228,9 @@ margin-top: 1rem;
 .hero {
   padding: 2rem 1.5rem;
   margin-top: 8.5rem;
+ background: linear-gradient(90deg, #2563eb, #7c3aed);
+ border-radius: 12px;
+  
 }
 .hero-content {
   display: flex;
@@ -1167,6 +1241,7 @@ margin-top: 1rem;
   padding: 2rem;
   border-radius: 20px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  background: rgb(252, 247, 252);
 }
 .hero-text h1 {
   font-size: 2rem;
@@ -1199,6 +1274,9 @@ margin-top: 1rem;
 .streak-card p {
   font-size: 1.3rem;
   font-weight: 700;
+  color: #2563eb;
+}
+.leader-b{
   color: #2563eb;
 }
 
@@ -1255,12 +1333,20 @@ margin-top: 1rem;
   color: #6b7280;
   font-size: 0.95rem;
 }
+.general-stat-section{
+  margin-top: 4rem;
+}
+.general-stat-section h2 {
+  margin-left: 2rem;
+}
+
 
 /*==============Dashboard subject card styles=============*/
 
 .subjects-section {
   padding: 0 1.5rem;
   margin-bottom: 2rem;
+  margin-top: 4rem;
 }
 .subjects-section h2 {
   margin-bottom: 1rem;
@@ -1306,14 +1392,13 @@ margin-top: 1rem;
   background: #1d4ed8;
 }
 
-/*============subject details page styles===============*/
+/*============Subject details page styles===============*/
 
 .subject-details {
   max-width: 1200px;
   margin: auto;
   padding: 2rem 1.5rem;
   margin-top: 5rem;
-  
 }
 
 .back-btn {
@@ -1414,6 +1499,26 @@ margin-top: 1rem;
 
 .subjectdetails-section {
   background: #f7f8fc;
+
+}
+/*==========Dashboard admin login button=======*/
+.admin-login-btn{
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
+  transition: 0.3s;
+  padding: 15px;
+  padding-left: -10px;
+  padding-right: -10px;
+  
+}
+.admin-login-btn:hover{
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
+  transform: translateY(-4px);
 }
 
 /*=========quiz page  header styles=================*/
@@ -1473,18 +1578,17 @@ margin-top: 1rem;
 }
 
 /*============Prev Next/Submit button Styles============*/
-.prevNext-flex{
+.prevNext-flex {
   display: flex;
-margin-bottom: 1.5rem;
-justify-content: space-between;
-align-items: center;
-margin-left: 20rem;
-margin-right: 20rem;
-margin-top: 1.5rem;
-
+  margin-bottom: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 20rem;
+  margin-right: 20rem;
+  margin-top: 1.5rem;
 }
 
-.submit-btn button{
+.submit-btn button {
   border: none;
   height: 45px;
   width: 100px;
@@ -1492,25 +1596,25 @@ margin-top: 1.5rem;
   background: #4be765;
   font-weight: 500;
 }
-.submit-btn button:hover{
+.submit-btn button:hover {
   background: #0db14c;
   transition: all 0.3s ease;
   box-shadow: 0 6px 15px rgb(35, 133, 35, 0.4);
   cursor: pointer;
 }
-.submit button{
+.submit button {
   background: rgb(238, 50, 50);
   color: white;
 }
-.submit button:hover{
-  background:  red;
+.submit button:hover {
+  background: red;
   cursor: pointer;
-  box-shadow: 0 6px 15px rgba(239,68,68,0.35);
+  box-shadow: 0 6px 15px rgba(239, 68, 68, 0.35);
   transition: all 0.3s ease;
 }
 
 /*===========Up button==========*/
-.Up-btn button{
+.Up-btn button {
   justify-content: center;
   align-items: center;
   border: none;
@@ -1518,17 +1622,11 @@ margin-top: 1.5rem;
   width: 40px;
   border-radius: 20px;
   margin-left: 50%;
-
 }
-.Up-btn button:hover{
+.Up-btn button:hover {
   background-color: #d1d5e2;
   cursor: pointer;
 }
-
-
-
-
-
 
 /* ============Result Page Styles==============*/
 
@@ -1552,7 +1650,7 @@ margin-top: 1.5rem;
   margin-bottom: 2rem;
 }
 
-.result-header p{
+.result-header p {
   font-weight: 600;
   color: #166534;
   font-style: italic;
@@ -1566,7 +1664,7 @@ margin-top: 1.5rem;
   text-align: center;
   margin-bottom: 2rem;
 }
-.score-section p{
+.score-section p {
   font-size: 22px;
   color: #111827;
   font-weight: bold;
@@ -1598,32 +1696,32 @@ margin-top: 1.5rem;
 .stats-grid {
   display: flex;
   grid-template-columns: repeat((auto-fit, minmax(140px, 1fr)));
-  gap:1rem;
+  gap: 1rem;
   margin-bottom: 2rem;
 }
 
-.result-stat{
+.result-stat {
   background: #e4e9ee;
   border-radius: 16px;
   padding: 1.2rem;
   text-align: center;
 }
 
-.result-stat h3{
+.result-stat h3 {
   color: #2563eb;
   margin-bottom: 0.4rem;
 }
-.result-actions{
+.result-actions {
   display: flex;
   gap: 1rem;
 }
 
-.result-stat p{
+.result-stat p {
   font-weight: 600;
 }
 
-.result-actions button{
-  flex:1;
+.result-actions button {
+  flex: 1;
   border: none;
   cursor: pointer;
   padding: 1rem;
@@ -1631,23 +1729,22 @@ margin-top: 1.5rem;
   font-weight: 600;
 }
 
-.review-btn{
+.review-btn {
   background: #2563eb;
   color: white;
-
 }
-.dashboard-btn{
+.dashboard-btn {
   background: #d9dbe0;
 }
-.review-btn:hover{
+.review-btn:hover {
   background: #2e51b3;
 }
-.dashboard-btn:hover{
+.dashboard-btn:hover {
   background: #caced6;
 }
 
 /*=================Recent Activity styles===========*/
-.recent-activity{
+.recent-activity {
   background: white;
   padding: 2rem;
   border-radius: 20px;
@@ -1655,27 +1752,30 @@ margin-top: 1.5rem;
   margin: 2rem 1.5rem;
   margin-left: 10%;
   margin-right: 10%;
-  
-  
-  
-
+  margin-top: 4rem;
 }
-.activity-item{
+.recent-activity h2{
+  justify-self: center;
+  background: #2563eb;
+  padding: 10px;
+  border-radius: 12px;
+  color: white;
+}
+.activity-item {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem 0;
-  border-bottom:1px solid #eee;
+  border-bottom: 1px solid #eee;
   margin-top: -1rem;
   gap: 15rem;
   margin-left: -4rem;
-  
 }
-.activity-item:last-child{
+.activity-item:last-child {
   border-bottom: none;
 }
 
-.empty-activity{
+.empty-activity {
   height: 180px;
   display: flex;
   justify-content: center;
@@ -1683,112 +1783,74 @@ margin-top: 1.5rem;
   color: #9ca3af;
   font-size: 1rem;
   font-weight: 500;
-  
- 
-  
-
-
 }
 
 /*============loading screen======================*/
-.loading-screen{
+.loading-screen {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  color: #2563eb;
+  margin-left: -8rem;
+  
 }
-.spinner{
+.spinner {
   width: 50px;
   height: 50px;
   border: 4px solid #eee;
-  border-top: 4px solid #dc2626;
+  border-top: 4px solid #2563eb;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
-@keyframes spin{
-  to{
+@keyframes spin {
+  to {
     transform: rotate(360deg);
   }
 }
 
 /*========offline banner==========================*/
-.offline-banner{
+.offline-banner {
   width: 100%;
   text-align: center;
   background-color: #f87171;
   color: white;
   padding: 0.5rem;
-position: fixed;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 50;
   font-weight: 500;
-
-  
-
 }
-.reset-navbar{
+.reset-navbar {
   margin-top: 0;
-  
 }
-.offline-banne{
+.offline-banne {
   width: 100%;
   text-align: center;
   background-color: white;
   color: white;
   padding: 0.5rem;
-position: fixed;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 50;
   font-weight: 500;
   margin-top: 0rem;
-
-  
-  
-
 }
 
-/*==================Pfofile-menu styles=============*/
-.profile-menu{
-  position: absolute;
-  top: 100%;
-  right: 0;
-  width: 180px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  padding: 0.5rem;
-  height: 180px;
-  display:flex;
-  flex-direction: column;
-  margin-right: 1rem;
-  
-}
-.profile-menu button{
-  margin-bottom: 1rem;
-  width: 55px;
-  border: none;
-  background: white;
-  color: #2563eb;
-  
-}
-.profile-menu button:hover{
-  color: #4b5563;
-  cursor: pointer;
-}
+
 /*==========profile page styles================*/
 
-.profile{
+.profile {
   min-height: 100vh;
   padding: 7rem 1.5rem 2rem;
   background: #f7f8fc;
   margin-top: -5rem;
-
 }
-.profile-card{
+.profile-card {
   max-width: 500px;
   margin: 0 auto;
   background: white;
@@ -1797,83 +1859,85 @@ position: fixed;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
-.avatar{
+.avatar {
   width: 110px;
   height: 110px;
   margin: 0 auto 1rem;
   border-radius: 50%;
-  background: linear-gradient(135deg,#dc2626,#ef4444);
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   font-size: 3rem;
   font-weight: 700;
-  box-shadow: 0 10px 25px rgba(220.38,38,0.3);
+  box-shadow: 0 10px 25px rgb(128, 51, 128);
 }
-.profile-card h2{
+.profile-card h2 {
   font-size: 1.8rem;
   margin-bottom: 0.3rem;
-
 }
-.profile-card p{
+.profile-card p {
   color: #64748b;
   font-size: 0.95rem;
-
 }
-.profile-stats{
+.profile-stats {
   max-width: 900px;
   margin: 2rem auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
-
 }
-.stat-card{
+/*===========Dashboard leaderborad card========*/
+
+.stat-card {
   background: white;
   border-radius: 18px;
   padding: 1.5rem;
   text-align: center;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 4rem;
 }
-.stat-card:hover{
+.stat-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-
 }
-.stat-card span{
+.stat-card span {
   font-size: 2rem;
 }
-.stat-card h3{
-  margin:0.8rem 0 0.3rem;
-  font-size:2rem ; 
-  color: #dc2626;
-
+.stat-card h3 {
+  margin: 0.8rem 0 0.3rem;
+  font-size: 2rem;
+  color: #2563eb;
+  text-decoration: underline
+  ;
 }
-.stat-card p{
-  font-size: 0.9rem;
+.stat-card p {
+  font-size: 1rem;
   color: #64748b;
+  text-decoration: underline;
 }
 
 /*=================Amin Page Styles=================*/
-.admin-page{
+.admin-page {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-
 }
-.admin-header{
-  margin-bottom:2rem;
-
+.admin-header {
+  margin-bottom: 2rem;
 }
-.admin-header h1{
+.admin-header h1 {
   font-size: 2rem;
 }
 
-.admin-form{
-  display:flex 
-  ;
+.admin-form {
+  display: flex;
   flex-direction: column;
   gap: 1rem;
   background: white;
@@ -1882,26 +1946,26 @@ position: fixed;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   margin-bottom: 2rem;
 }
-.admin-form input, .admin-form select{
+.admin-form input,
+.admin-form select {
   padding: 0.9rem;
-  border:  1px solid #ddd;
+  border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 1rem;
 }
-.admin-form button{
+.admin-form button {
   padding: 1rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-
 }
-.questions-list{
+.questions-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem;
 }
-.quesstion-card{
+.quesstion-card {
   background: white;
   padding: 1.2rem;
   border-radius: 12px;
@@ -1909,50 +1973,957 @@ position: fixed;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-
-
 }
-.theSubject-badge{
+.theSubject-badge {
   display: inline-block;
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
   font-size: 0.8rem;
+  line-height: 1.2rem;
   font-weight: 600;
 }
-.the-options{
+.the-options {
   margin-top: 0.5rem;
   padding-left: 0.5rem;
 }
-.the-options p{
+.the-options p {
   margin: 0.3rem 0;
-
 }
-.add-question-btn{
+.add-question-btn {
   display: flex;
   gap: 0.7rem;
   margin-top: 1rem;
 }
-.delete-question-btn{
+.delete-question-btn {
   padding: 0.7rem 1rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
 }
-.edit-btn{
+.edit-btn {
   padding: 0.7rem 1rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
 }
-/*===========No Question Styles====================*/
+/*===========No  Question yet... Styles====================*/
 .no-question {
   justify-content: center;
   align-items: center;
   color: #4b5563;
 }
-.no-question h2{
+.no-question h2 {
   margin-left: 35%;
+  margin-bottom: -5rem;
+}
+
+/*==============Bulk upload styles====================*/
+.bulk-upload {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+.bulk-upload textarea {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 8px;
+  min-height: 300px;
+  font-family: monospace;
+}
+.bulk-upload button {
+  margin-top: 1rem;
+}
+
+/*==================filter question styles==============*/
+.question-filters {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+.question-filters input,
+.question-filters select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/*===================User section management styles================*/
+.users-section {
+  margin-top: 40px;
+}
+.user-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+/*==================Leader board styles==================*/
+.leaderboard-page {
+  padding: 20px;
+}
+.leaderboard-header,
+.leaderboard-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 120px 120px 120px;
+  gap: 10px;
+  padding: 15px;
+  align-items: center;
+}
+.leaderboard-header {
+  font-weight: bold;
+  border-bottom: 2px solid #ddd;
+}
+.leaderboard-row {
+  border-bottom: 1px solid #eee;
+}
+/*==================Analytics section styles=========================*/
+.analytics-section {
+  margin-bottom: 40px;
+}
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
+.analytics-card {
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+}
+.analytics-card h3 {
+  margin-bottom: 10px;
+}
+.analytics-card p {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+/*==============Dashboard Each Subject-stat styles========*/
+.subject-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.subject-stat-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 12px;
+}
+.subject-stat-cont {
+  background: whitesmoke;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.subject-stat-cont h2 {
+  margin-left: 1rem;
+}
+
+/*=======================Review Page Styles================*/
+
+.review-explain {
+  font-weight: 600;
+  font-size: 13px;
+  max-width: 500px;
+}
+
+/*-================Landing Nav Bar styles================*/
+.landing-navbar {
+  /*display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:  20px 8%;
+  background: white;
+  margin-bottom: -7rem;*/
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(175, 188, 230, 0.418);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 20px 8%;
+  display: flex;
+  gap: 40rem;
+  margin-top: -1rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.nav-links:hover {
+  transform: scale(1);
+}
+
+.landing-login-btn {
+  width: 6rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  color: rgb(196, 64, 196);
+}
+.landing-login-btn:hover {
+  transform: scale(1.01);
+
+  cursor: pointer;
+}
+
+.logo {
+  font-size: 28px;
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/*=================Landing Hero Section============*/
+.landing-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 100px 8%;
+  min-height: 90vh;
+  gap: 40px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top left, #dbeafe, transparent 40%),
+    radial-gradient(circle at bottom right, #ddd6fe, transparent 15%);
+}
+.landing-hero-content {
+  flex: 1;
+  margin-top: 0rem;
+}
+.landing-hero-content h1 {
+  font-size: 4rem;
+  margin: auto 20px 0;
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.landing-hero-content p {
+  font-size: 1.1rem;
+  line-height: 1.7rem;
+}
+.hero-buttons {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+  padding: 14px, 30px;
+}
+.start-learning-btn {
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
+  transition: 0.3s;
+  padding: 15px;
+}
+.secondary-btn {
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
+  transition: 0.3s;
+  padding: 15px;
+}
+.start-learning-btn:hover,
+.secondary-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3);
+}
+
+.hero-image {
+  flex: 1;
+  position: relative;
+}
+.hero-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  animation: fadeImage 0.9s ease;
+}
+@keyframes fadeImage {
+  from {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+.floating-card {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 15px 20px;
+  border-radius: 18px;
+  display: flex;
+  gap: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  align-items: center;
+}
+.floating-card span {
+  display: block;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.card-one {
+  top: 15%;
+  right: -20px;
+  margin-top: 2rem;
+}
+.card-two {
+  bottom: 15%;
+  left: -30px;
+  margin-left: 1rem;
+}
+/*-----------hero img messages------------------*/
+.image-message {
+  position: absolute;
+  bottom: 15px;
+  margin-left: 9rem;
+  margin-right: 3rem;
+
+  left: 5px;
+  right: 25px;
+  background: rgba(38, 43, 56, 0.75);
+  backdrop-filter: blur(10px);
+  padding: 5px;
+  border-radius: 18px;
+  color: white;
+  z-index: 2;
+  animation: fadeText 0.5s ease;
+}
+.image-message h2 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.image-message p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #e2e8f0;
+  font-style: italic;
+}
+@keyframes fadeText {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*---------------dot style for hero img slides----------*/
+.slider-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+.slider-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+  opacity: 0.5;
+  cursor: pointer;
+}
+.slider-dots .active-dot {
+  opacity: 1;
+  width: 25px;
+  border-radius: 10px;
+}
+/*==================Landing Stat styles=============*/
+.stats {
+  margin-top: -7rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 50px 8%;
+}
+.stat-cardy {
+  background: white;
+  padding: 25px;
+  text-align: center;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  transition: 0.3s ease;
+  border: 1px solid rgba(37, 99, 235, 0.08);
+}
+.stat-cardy::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: #2563eb;
+}
+.stat-cardy:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+}
+.stat-cardy h2 {
+  font-size: 2.5rem;
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+.stat-cardy p {
+  color: #64748b;
+  font-weight: 600;
+}
+/*============Landing Feature Styles===================*/
+.features {
+  padding: 100px 8%;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.features h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #0f172a;
+}
+.features::after {
+  content: "";
+  display: block;
+  width: 300px;
+  height: 4px;
+  background: #2563eb;
+  margin: 20px auto;
+  border-radius: 20px;
+}
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin-top: 30px;
+  gap: 30px;
+}
+.feature-card {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 30px;
+
+  text-align: center;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  transition: 0.3s;
+}
+.feature-card svg {
+  width: 45px;
+  height: 45px;
+  color: #2563eb;
+  margin-bottom: 20px;
+}
+.feature-card h3 {
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+/*==============How It Works styles==========*/
+.how {
+  padding: 80px 8%;
+  text-align: center;
+  background: #f8fafc;
+  margin-top: -3rem;
+}
+.how h2 {
+  font-size: 2.5rem;
+  color: #0f172a;
+  margin-bottom: 50px;
+}
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+  position: relative;
+}
+.step {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.step h1 {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #2563eb;
+  color: white;
+  font-size: 2rem;
+}
+.step p {
+  color: #475569;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/*=============CTA styles==================*/
+.cta {
+  background: #2563eb;
+  padding: 80px 8%;
+  text-align: center;
+  color: white;
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+.cta-btn {
+  width: 6rem;
+  height: 2.5rem;
+  border-radius: 0.8rem;
+  border: none;
+}
+.cta-btn:hover {
+  transform: scale(1.02);
+  background: #e4e6eb;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+  cursor: pointer;
+}
+
+.landing-Up-btn {
+  justify-content: center;
+  margin-top: 2rem;
+}
+.landing-Up-btn button {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
+}
+.landing-Up-btn button:hover {
+  background: #e4e6e9;
+  cursor: pointer;
+}
+/*==========Landing Footer styles==================*/
+.footer {
+  text-align: center;
+  padding: 30px;
+  background: #0f172a;
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+.footer h3 {
+  color: #6b7280;
+}
+.footer p {
+  color: #4b5563;
+}
+/*===================Scroll Animation========*/
+.feature-card,
+.stat-card,
+.step {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.feature-card:hover,
+.stat-card:hover,
+.step:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.main-landing-page {
+  background: linear-gradient(180deg, #f8fafc, #eef2ff);
+  color: var(#0f172a);
+  font-family: "Inter", sans-serif;
+}
+/*================Landing Page Responsivenes Design================*/
+@media (max-width: 900px) {
+  /*----------Nav Bar------------*/
+  .landing-navbar {
+    padding: 20px 5%;
+  }
+  .nav-links {
+    gap: 10px;
+  }
+  /*---------Hero----------*/
+  .landing-hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 70px 5%;
+  }
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+  .hero-content p {
+    max-width: 500px;
+    margin: auto;
+  }
+  .hero-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  /*-------Hero Image----------*/
+  .hero-image {
+    width: 100%;
+    margin-top: 40px;
+  }
+  .hero-image img {
+    max-width: 450px;
+    height: 450px;
+  }
+  /*-------------Floating cards-----------*/
+  .card-one {
+    right: 0;
+  }
+  .card-two {
+    left: 0;
+  }
+  /*-------------Stats----------*/
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 50px 5%;
+  }
+  /*-------------Features--------------*/
+  .feature-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .steps {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  /*------------NavBar----------*/
+  .landing-navbar {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .logo {
+    font-size: 24px;
+  }
+  /*-----Hero----------------*/
+  .landing-hero {
+    padding: 50px;
+  }
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+  .hero-content p {
+    font-size: 15px;
+  }
+  .hero-buttons button {
+    width: 220px;
+  }
+
+  /*-------------Image---------*/
+  .hero-image img {
+    height: 350px;
+  }
+
+  /*------------------measege overlay------*/
+  .image-message {
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+  }
+  .image-message h2 {
+    font-size: 18px;
+  }
+  .image-message p {
+    font-size: 12px;
+  }
+  /*-------Floating card--------------*/
+  .floating-card {
+    padding: 10px;
+    font-size: 12px;
+  }
+  .card-one {
+    top: 10px;
+    right: -5px;
+  }
+  .card-two {
+    bottom: 20px;
+    left: -5px;
+  }
+
+  /*----------------stats-----------*/
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  /*----------Features----------*/
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /*---------stteps----**/
+  .steps {
+    grid-template-columns: 1fr;
+  }
+  /*---cta------*/
+  .cta h2 {
+    font-size: 2rem;
+  }
+
+  /*--footer----*/
+  .footer {
+    padding: 25px 15px;
+  }
+}
+@media (max-width: 400px) {
+  .hero-content h1 {
+    font-size: 1.9rem;
+  }
+  .logo {
+    font-size: 1.4rem;
+  }
+  .nav-links {
+    flex-direction: column;
+  }
+  .hero-image img {
+    width: 90%;
+  }
+}
+/*====================Login/ SignUp Page Style==============*/
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:
+    radial-gradient(circle at top left, #7c3aed55, transparent 40%),
+    radial-gradient(circle at bottom right, #2563eb55, transparent 40%),
+    linear-gradient(135deg, #2563eb, #7c3aed);
+    position: relative;
+    overflow: hidden;
+
+}
+
+/*-------floating blur shapes-------------*/
+.login-container::before, .login-container::after{
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+
+
+
+}
+.login-container::before{
+  top: -80px;
+  left: -80px;
+
+}
+.login-container::after{
+  bottom: -90px;
+  right: -70px;
+
+}
+.login-card{
+  width: 100%;
+  max-width: 420px;
+  padding: 40px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 25px 50px rgba(255, 255, 255, 0.25);
+  color: white;
+  animation: slideUp 0.5s ease;
+}
+@keyframes slideUp{
+  from{
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to{
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.login-header{
+  text-align: center;
+  margin-bottom: 30px;
+}
+.login-header h1{
+  font-size: 32px;
+  margin-bottom: 8px;
+
+}
+.login-header p{
+  opacity: 0.8;
+  font-size: 14px;
+
+}
+.login-form{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.input-group{
+  position: relative;
+}
+.input-group input{
+  width: 100%;
+  padding: 15px;
+  border-radius: 14px;
+  border: none;
+  outline: none;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  font-size: 15px;
+
+}
+.input-group input::placeholder{
+  color: #e5e7eb;
+}
+.input-group:focus{
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0  0 3px rgba(255, 255, 255, 0.2);
+}
+
+
+.eye-btn{
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  opacity: 0.8;
+
+}
+.eye-btn:hover{
+  opacity: 1;
+}
+.log-in-btn{
+  margin-top: 10px;
+  padding: 15px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  background: white;
+  color: #2563eb;
+  transition: 0.3s;
+}
+.log-in-btn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+}
+.forgot-btn, .back-btn-to-landing{
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-top: 18px;
+}
+
+.forgot-btn, .back-btn-to-landing:hover{
+  text-decoration: underline;
+}
+.error-message{
+  color: #fecaca;
+  text-align: center;
+  margin-top: 15px
+  ;
+}
+.signup-text{
+  text-align: center;
+  margin-top: 20px;
+
+}
+.signup-text-link{color: white;
+  font-weight: bold;
+
+}
+.back-btn-to-landing{
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
   
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
 
+@media(max-width:480px){
+  .login-card{
+    padding: 28px 20px;
+  }
+  .login-header h1{
+    font-size: 26px;
+  }
+}
 
+/*--------------Login page loader spinner---------*/
+.login-spinner{
+  width:18px;
+  height: 18px;
+  border: 3px solid rgba(37, 99, 235, 0.3);
+  border-top: 3px solid #2563eb;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+
+}
+
+.loading-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+}
+@keyframes spin {
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+.log-in-btn:disabled{
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
 }

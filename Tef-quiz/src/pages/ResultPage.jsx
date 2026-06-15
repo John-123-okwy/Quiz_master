@@ -7,6 +7,7 @@ import { addDoc, collection, doc, getDoc, updateDoc } from "firebase/firestore";
 import { quizReducer } from "../reducer/quizReducer";
 
 function ResultPage({
+  score,
   questions,
   answer,
   points,
@@ -14,6 +15,7 @@ function ResultPage({
   secondsRemaining,
   totalQuizTime,
 }) {
+  const [quizHistory, setQuizHistory] = useState([]);
   //=======Derived state for Total number of questions=============//
   const totalQuestions = questions.length;
 
@@ -25,11 +27,11 @@ function ResultPage({
 
   //================Derived state for Total Points=====================//
   const totalPossiblePoints = questions.reduce(
-    (acc, question) => acc + question.points,0 
-    
+    (acc, question) => acc + question.points,
+    0,
   );
 
-  console.group({points,totalPossiblePoints})
+  console.group({ points, totalPossiblePoints });
   //=============Derived state for percntage of result===================//
   const resultPercentage = ((points / totalPossiblePoints) * 100).toFixed(1);
 
@@ -56,16 +58,16 @@ function ResultPage({
   const quizAttempt = {
     id: Date.now(),
     subject: subjectName,
-    score:Number(resultPercentage),
+    score: resultPercentage,
+
     points,
-    totalPoints:totalPossiblePoints,
+    totalPoints: totalPossiblePoints,
     correctAnswer,
     wrongAnswer,
     totalQuestions: totalQuestions,
     date: new Date().toISOString(),
     submittedAt: new Date().toISOString(),
     timedUsed,
-    
   };
 
   //==============user UID===================//
@@ -101,7 +103,8 @@ function ResultPage({
   const [saved, setSaved] = useState(false);
 
   const hasSaved = useRef(false);
-  //=============Saving function ============================//
+
+  //============= Quiz Attempts Saving function ============================//
   async function saveQuizAttempt() {
     if (hasSaved.current) return;
 
@@ -114,6 +117,72 @@ function ResultPage({
         collection(db, "users", user.uid, "quizHistory"),
         quizAttempt,
       );
+
+      /*------------------------------------- */
+
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
+      const userData = userSnap.data();
+      console.log(userData)
+      const subject = quizAttempt.subject.toLowerCase();
+      const currentSubjectPoints = userData.subjectPoints || {};
+      const currentSubjectStats = userData.subjectStats || {};
+      const currentStats = currentSubjectStats[subject] || {
+        bestScore: 0,
+        averageScore: 0,
+        attempts: 0,
+      };
+      const updatedSubjectAttempts = currentStats.attempts + 1;
+      const updatedSubjectBestScore = Math.max(
+        currentStats.bestScore,
+        resultPercentage,
+      );
+      const updatedSubjectAverage =
+        Math.round(
+          currentStats.averageScore * currentStats.attempts +Number( resultPercentage),
+        ) / updatedSubjectAttempts;
+      const updatedSubjectStats = {
+        ...currentSubjectStats,
+        [subject]: {
+          bestScore: updatedSubjectBestScore,
+          averageScore: updatedSubjectAverage,
+          attempts: updatedSubjectAttempts,
+        },
+      };
+
+      const updatedSubjectPoints = {
+        ...currentSubjectPoints,
+        [subject]: (currentSubjectPoints[subject] || 0) + points,
+      };
+      const updatedPoints = (userData.totalPoints || 0) + points;
+      const updatedBestScore = Math.max(
+        userData.bestScores || 0,
+        Number(resultPercentage),
+      );
+
+      const updatedAttempts = (userData.quizAttempts || 0) + 1;
+      const updatedAverage = Math.round(
+        ((userData.averageScores || 0) * (updatedAttempts - 1) +
+          Number(resultPercentage)) /
+          updatedAttempts,
+      );
+      console.log("Subject:",subject)
+      console.log("Current subject stat:",currentSubjectStats)
+      console.log("current stat:",currentStats)
+        console.log("updated subject sats:", updatedSubjectStats)
+        console.log("Result percentage:", resultPercentage)
+
+      
+
+      await updateDoc(userRef, {
+        totalPoints: updatedPoints,
+        bestScores: updatedBestScore,
+        quizAttempts: updatedAttempts,
+        averageScores: updatedAverage,
+        subjectPoints: updatedSubjectPoints,
+        subjectStats: updatedSubjectStats,
+      });
+      /*------------------------------------- */
       console.log("quiz saved");
       setSaved(true);
     } catch (err) {
@@ -122,12 +191,10 @@ function ResultPage({
   }
   //===============state variable for streak==================//
 
- // const[streak, setStreak]=useState(0)
-
-  
+  // const[streak, setStreak]=useState(0)
 
   //==================function for updateStreak======================//
- /* async function updateUserStreak() {
+  /* async function updateUserStreak() {
     const user = auth.currentUser;
     if (!user) return;
     const userRef = doc(db, "users", user.uid);
@@ -154,12 +221,10 @@ function ResultPage({
     }
     await updateDoc(userRef, { streak: newStreak, lastQuizDate: today });
   }*/
-   
 
   //==============useEffect to call the saving function===============//
   useEffect(() => {
     saveQuizAttempt();
-  
   }, []);
   /////////////////
   return (
@@ -175,11 +240,10 @@ function ResultPage({
         </div>
         <p>Time Used: {formatTime(timedUsed)}</p>
         <div className="score-section">
-          <h2>{resultPercentage}%</h2>
+          <h2> {resultPercentage}%</h2>
           <p>
-            Score: {points}/{totalPossiblePoints}
+            Your Score: {points}/{totalPossiblePoints} points
           </p>
-          
         </div>
         <div
           className={` status-badge ${resultPercentage >= 50 ? "pass" : "fail"}`}
@@ -240,7 +304,6 @@ function ResultPage({
       <button onClick={() => dispatch({ type: "SHOW_REVIEW" })}>
         Review answers
       </button>*/}
-      
     </main>
   );
 }
