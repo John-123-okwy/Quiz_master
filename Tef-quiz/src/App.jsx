@@ -39,7 +39,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
 import LandingPage from "./pages/LandingPage";
 import Quiz from "./pages/Quiz";
-import SubjectDetails from "./pages/subjectDetails";
+import SubjectDetails from "./pages/SubjectDetails";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebase";
