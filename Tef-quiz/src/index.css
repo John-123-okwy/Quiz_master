@@ -2599,6 +2599,10 @@ margin-top: 1rem;
     max-width: 450px;
     height: 450px;
   }
+  .image-message{
+    max-width: 300px;
+    height: 200px;
+  }
   /*-------------Floating cards-----------*/
   .card-one {
     right: 0;
@@ -2649,7 +2653,7 @@ margin-top: 1rem;
 
   /*-------------Image---------*/
   .hero-image img {
-    height: 350px;
+    height: 300px;
   }
 
   /*------------------measege overlay------*/
@@ -2714,6 +2718,18 @@ margin-top: 1rem;
   }
   .hero-image img {
     width: 90%;
+  }
+  /*------------------measege overlay------*/
+  .image-message {
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+  }
+  .image-message h2 {
+    font-size: 18px;
+  }
+  .image-message p {
+    font-size: 12px;
   }
 }
 /*====================Login/ SignUp Page Style==============*/
