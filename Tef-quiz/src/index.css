@@ -2662,6 +2662,8 @@ margin-top: 1rem;
     right: 15px;
     bottom: 15px;
     max-width: 200px;
+    height: 100px;
+  
   }
   .image-message h2 {
     font-size: 18px;
