@@ -2658,9 +2658,10 @@ margin-top: 1rem;
 
   /*------------------measege overlay------*/
   .image-message {
-    left: 5px;
-    right: 5px;
-    bottom: 5px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    max-width: 200px;
   }
   .image-message h2 {
     font-size: 18px;
@@ -2721,9 +2722,10 @@ margin-top: 1rem;
   }
   /*------------------measege overlay------*/
   .image-message {
-    left: 5px;
-    right: 5px;
-    bottom: 5px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    max-width: 200px;
   }
   .image-message h2 {
     font-size: 18px;
