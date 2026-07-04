@@ -2658,9 +2658,10 @@ margin-top: 1rem;
 
   /*------------------measege overlay------*/
   .image-message {
-    left: 3px;
-    right: 20px;
-    bottom: 1px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    margin-bottom: 10px;
   
     
   
@@ -2683,7 +2684,7 @@ margin-top: 1rem;
     right: -5px;
   }
   .card-two {
-    bottom: 20px;
+    bottom: 10px;
     left: -5px;
   }
 
@@ -2727,9 +2728,11 @@ margin-top: 1rem;
   /*------------------measege overlay------*/
   
   .image-message {
-    left: 4px;
+    left: 15px;
     right: 15px;
-    bottom: 1px;
+    bottom: 15px;
+    margin-bottom: 10px;
+
     
   }
   .image-message h2 {
