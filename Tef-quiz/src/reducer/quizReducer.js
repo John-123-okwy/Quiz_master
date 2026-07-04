@@ -29,7 +29,7 @@ export function quizReducer(state, action) {
     console.log("APi:",action.payload)
       return { ...state, questions: action.payload ,
         secondsRemaining:state.questions.length *secPerQue,
-        totalQuizTime:state.questions.length *30
+        totalQuizTime:state.questions.length *secPerQue
       };
     case "NEW_ANSWER":
       const pquestion = state.questions.at(state.index);
