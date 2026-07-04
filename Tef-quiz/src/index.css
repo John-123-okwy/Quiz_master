@@ -2600,8 +2600,8 @@ margin-top: 1rem;
     height: 450px;
   }
   .image-message{
-    max-width: 300px;
-    height: 200px;
+    left: 5px;
+    right: 19px;
   }
   /*-------------Floating cards-----------*/
   .card-one {
