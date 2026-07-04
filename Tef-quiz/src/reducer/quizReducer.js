@@ -12,7 +12,7 @@ export const initialState = {
   secondsRemaining:null,
   showReview:false,
   reviewIndex:0,
-  totalQuizTime:0
+  totalQuizTime:null
 };
 
 
