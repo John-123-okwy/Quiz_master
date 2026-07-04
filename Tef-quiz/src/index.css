@@ -2658,9 +2658,9 @@ margin-top: 1rem;
 
   /*------------------measege overlay------*/
   .image-message {
-    left: 15px;
-    right: 15px;
-    bottom: 15px;
+    left: 3px;
+    right: 20px;
+    bottom: 1px;
   
     
   
@@ -2672,10 +2672,7 @@ margin-top: 1rem;
     font-size: 12px;
   }
 
-  .hero-image {
-    width: 100%;
-    margin-top: 40px;
-  }
+  
   /*-------Floating card--------------*/
   .floating-card {
     padding: 10px;
@@ -2728,15 +2725,12 @@ margin-top: 1rem;
     width: 90%;
   }
   /*------------------measege overlay------*/
-  .hero-image {
-    width: 100%;
-    margin-top: 40px;
-  }
+  
   .image-message {
-    left: 15px;
+    left: 4px;
     right: 15px;
-    bottom: 15px;
-    max-width: 200px;
+    bottom: 1px;
+    
   }
   .image-message h2 {
     font-size: 18px;
