@@ -91,8 +91,9 @@ export function quizReducer(state, action) {
       return{...state,index:action.payload}
 
       case"TICK":
-      return{...state, secondsRemaining:state.secondsRemaining -1,
-        finished:state.secondsRemaining===0? true :state.finished
+      const remaining=state.secondsRemaining -1
+      return{...state, secondsRemaining:remaining,
+        finished: remaining<=0/*state.secondsRemaining===0? true :state.finished*/
       }
 
       case"SHOW_REVIEW":
