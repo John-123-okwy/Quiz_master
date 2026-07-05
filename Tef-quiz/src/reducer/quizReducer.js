@@ -9,10 +9,10 @@ export const initialState = {
   index: 0,
   answer: {},
   points: 0,
-  secondsRemaining:null,
+  secondsRemaining:5,
   showReview:false,
   reviewIndex:0,
-  totalQuizTime:null
+  totalQuizTime:0
 };
 
 
